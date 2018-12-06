@@ -22,10 +22,11 @@ class LobbyObject(models.Model):
     lobby_uuid =  models.CharField(max_length=36, default=str(uuid4()))
     creation_timestamp = models.DateTimeField(default=timezone.now())
     expiration_timestamp = models.DateTimeField(default=timezone.now()+timedelta(hours=2))
+    key = models.CharField(max_length=24, null=True)
 
 
 
 class GameObject(models.Model):
-    lobby = models.OneToOneField(LobbyObject, on_delete=models.CASCADE)
+    lobby = models.OneToOneField(LobbyObject, on_delete=models.CASCADE, null=True)
     is_idle = models.BooleanField(default=True)
     is_active = models.BooleanField(default=False)
