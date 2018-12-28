@@ -12,9 +12,12 @@ from uuid import uuid4
 
 class PlayerObject(models.Model):
     nick = models.CharField(default="Supreme assassin", max_length=32)
-    player_uuid = models.CharField(max_length=36, default=str(uuid4()))
+    uuid = models.CharField(max_length=36, default=str(uuid4()))
     creation_timestamp = models.DateTimeField(default=timezone.now())
     expiration_timestamp = models.DateTimeField(default=timezone.now()+timedelta(days=1))
+
+    def __str__(self):
+        return str(self.nick)
 
 class LobbyObject(models.Model):
     host = models.OneToOneField(PlayerObject, on_delete=models.CASCADE, related_name='host')

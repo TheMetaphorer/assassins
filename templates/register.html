@@ -7,4 +7,9 @@
 </head>
 <h1>Welcome to Assassins</h1>
 <h2>Register your nick here.</h2>
+<form method="POST" action="/assassins/register">
+    {% csrf_token %}
+    {{ register_form }}
+    <input type="submit">
+</form>
 
