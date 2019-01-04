@@ -1,3 +1,5 @@
 #Django and SQLite gitignore
 *.pyc
 *.sqlite3
+migrations/
+manage.py 

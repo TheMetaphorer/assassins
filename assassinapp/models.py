@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User, AnonymousUser
 
 from datetime import timedelta
 
@@ -11,6 +12,7 @@ from uuid import uuid4
 # Create your models here.
 
 class PlayerObject(models.Model):
+    user = models.OneToOneField(to=User, default=0)
     nick = models.CharField(default="Supreme assassin", max_length=32)
     uuid = models.CharField(max_length=36, default=str(uuid4()))
     creation_timestamp = models.DateTimeField(default=timezone.now())
